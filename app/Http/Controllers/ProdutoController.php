@@ -7,16 +7,34 @@ use Illuminate\Support\Facades\DB;
 class ProdutoController extends Controller{
     public function lista(){
         // nosso código vai aqui
-        $html = '<h1>Listagem de produtos com Laravel</h1>';
-        $html .= '<ul>';
         $produtos = DB::select('select * from produtos');
 
-        foreach ($produtos as $p) {
-            $html .= '<li> Nome: '. $p->nome .',Descrição: '. $p->descricao .'</li>';
+        return view('produto.listagem')->withProdutos($produtos);
+        /**
+         * return view('listagem')->with('produtos', $produtos);
+         * --------------------
+         * return view('listagem', ['produtos' => $produtos]);
+         * --------------------
+         * $data = ['produtos' => $produtos];
+         * return view('listagem', $data);
+         * --------------------
+         * $data = [];
+         * $data['produtos'] = $produtos;
+         * return view('listagem', $data);
+         */
+    }
+    public function mostrar($id){
+        //$id = Request::input('id', '0');
+        //$id = Request::route('id');
+        $resposta = DB::select('select * from produtos where id = ?',[$id]);
+        if(empty($resposta)) {
+            return "Esse produto não existe";
         }
-        $html .= '</ul>';
+        return view('produto.detalhes')->with('p', $resposta[0]);
+    }
+    public function novo(){
+        return view('produto.formulario');
 
-        return $html;
     }
 }
         
