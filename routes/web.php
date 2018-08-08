@@ -17,10 +17,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-*/
+
 Route::get('/', function(){
     return '<h1>Primeira lógica com Laravel.</h1>';
-});
+});*/
+
 Route::get('/produtos', 'ProdutoController@lista');
 Route::get('/produtos/mostra/{id}', 'ProdutoController@mostrar')->where('id', '[0-9]+');
 Route::get('/produtos/novo', 'ProdutoController@novo');
+//Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
+  Route::match(array('GET', 'POST'), '/produtos/adiciona', 'ProdutoController@adiciona');   
+ 
