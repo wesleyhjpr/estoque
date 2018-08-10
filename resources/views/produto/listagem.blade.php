@@ -26,7 +26,8 @@
         <td>{{ $p->descricao }} </td>
         <td>{{ $p->quantidade }} </td>
         <td>
-            <a href="/produtos/mostra/{{$p->id}}"><span class="fas fa-search"></span></a>&nbsp;
+            <a href="{{action('ProdutoController@mostrar', $p->id)}}"><span class="fas fa-search"></span></a>&nbsp;
+            <a href="{{action('ProdutoController@editar', $p->id)}}"><span class="fas fa-edit"></span></a>&nbsp;
             <a href="{{action('ProdutoController@remove', $p->id)}}"><span class="fas fa-trash"></span></a>
         </td>
         {{-- <td><a href="/produtos/mostra?id={{$p->id}}"><span class="fas fa-search"></span></a></td>--}}
@@ -40,10 +41,7 @@
     Um ou menos itens no estoque
     </span>
 </h4>
-@if (old('nome'))
-<div class="alert alert-success">
-    <strong>Sucesso!</strong>
-    O produto {{ old('nome') }} foi adicionado.
-</div>
+@if(Session::has('mensagem_sucesso'))
+    <div  class="alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
 @endif  
 @endsection

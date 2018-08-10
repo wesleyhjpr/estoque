@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('content')
-<h1>Novo produto</h1>
+
 {{-- <form action="/produtos/adiciona" method="post">
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
@@ -23,16 +23,23 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>--}}
-<script>
-    $( document ).ready(function() {
-        $(".alert").fadeTo(3500, 500).slideUp(500, function(){
-        $(".alert").slideUp(500);
-        });
-    });                   
-</script>
-@if (Request::is('*/editar'))                        
-    {!! Form::model($cliente, ['method' => 'PATCH', 'url' => 'clientes/'.$cliente->id]) !!}                        
+@if(Session::has('mensagem_sucesso'))
+    <div  class="alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
+@endif
+@if (Request::is('*/editar'))
+<h1>Editar produto</h1>                        
+    {!! Form::model($produto, ['method' => 'PATCH', 'url' => 'produtos/'.$produto->id]) !!}                        
 @else
+<h1>Novo produto</h1>
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <ul>
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach 
+    </ul>
+</div>
+@endif  
 {!! Form::open(['url' => "/produtos/adiciona"]) !!}
 @endif
     <div class="form-group">    
@@ -51,6 +58,8 @@
         {!! Form::label('quantidade', 'Quantidade') !!}
         {!! Form::number('quantidade', null, ['class' => 'form-control', 'placeholder' => 'Quantidade']) !!} 
     </div>
+    <div class="form-group">
         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-{!! Form::close() !!}      
+    </div>
+{!! Form::close() !!}   
 @endsection

@@ -29,4 +29,7 @@ Route::get('/produtos/novo', 'ProdutoController@novo');
 Route::match(array('GET', 'POST'), '/produtos/adiciona', 'ProdutoController@adiciona');
 Route::get('/produtos/json', 'ProdutoController@listaJson');   
 Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
+
+Route::get('produtos/{produto}/editar', 'ProdutoController@editar');
+Route::patch('produtos/{produto}', 'ProdutoController@atualizar');
  
