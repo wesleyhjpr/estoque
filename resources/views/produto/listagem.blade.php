@@ -15,7 +15,7 @@
             <th>Valor</th>
             <th>Descrição</th>
             <th>Quantidade</th>
-            <th>Visualizar</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>    
@@ -25,7 +25,10 @@
         <td>{{ $p->valor }} </td>
         <td>{{ $p->descricao }} </td>
         <td>{{ $p->quantidade }} </td>
-        <td><a href="/produtos/mostra/{{$p->id}}"><span class="fas fa-search"></span></a></td>
+        <td>
+            <a href="/produtos/mostra/{{$p->id}}"><span class="fas fa-search"></span></a>&nbsp;
+            <a href="{{action('ProdutoController@remove', $p->id)}}"><span class="fas fa-trash"></span></a>
+        </td>
         {{-- <td><a href="/produtos/mostra?id={{$p->id}}"><span class="fas fa-search"></span></a></td>--}}
     </tr>
     @endforeach
@@ -36,5 +39,11 @@
     <span class="badge badge-danger float-right">
     Um ou menos itens no estoque
     </span>
-</h4>  
+</h4>
+@if (old('nome'))
+<div class="alert alert-success">
+    <strong>Sucesso!</strong>
+    O produto {{ old('nome') }} foi adicionado.
+</div>
+@endif  
 @endsection

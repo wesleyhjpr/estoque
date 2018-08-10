@@ -17,10 +17,10 @@
                 <a class="navbar-brand" href="/produtos">Estoque Laravel</a>            
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/produtos" class="nav-link">Listagem</a>
+                        <a href="{{action('ProdutoController@lista')}}" class="nav-link">Listagem</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/produtos/novo" class="nav-link">novo</a>
+                        <a href="{{action('ProdutoController@novo')}}" class="nav-link">novo</a>
                     </li>
                 </ul>
             </nav>
