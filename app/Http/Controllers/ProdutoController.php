@@ -68,6 +68,25 @@ class ProdutoController extends Controller{
         //$params = Request::all(); 
         //$produto = new Produto($params);
         //$produto->save();
+        $validator = Validator::make(
+            [
+            'nome' => Request::input('nome'),
+            'descricao' => Request::input('descricao'),
+            'valor' => Request::input('valor'),
+            'quantidade' => Request::input('quantidade')
+            ],
+            [
+            'nome' => 'required|min:5',
+            'descricao' => 'required|max:255',
+            'valor' => 'required|numeric',
+            'quantidade' => 'required|numeric'
+            ]
+            );
+            
+        if ($validator->fails())
+        {
+            return redirect()->action('ProdutoController@novo');
+        }
         Produto::create(Request::all());
         return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
     }
