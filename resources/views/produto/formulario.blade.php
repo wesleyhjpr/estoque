@@ -28,7 +28,7 @@
 @endif
 @if (Request::is('*/editar'))
 <h1>Editar produto</h1>                        
-    {!! Form::model($produto, ['method' => 'PATCH', 'url' => 'produtos/'.$produto->id]) !!}                        
+    {!! Form::model($produto, ['method' => 'PATCH', 'url' => action('ProdutoController@atualizar',$produto->id)]) !!}                        
 @else
 <h1>Novo produto</h1>
 @if (count($errors) > 0)
@@ -40,7 +40,7 @@
     </ul>
 </div>
 @endif  
-{!! Form::open(['url' => "/produtos/adiciona"]) !!}
+{!! Form::open(['url' => action('ProdutoController@adiciona')]) !!}
 @endif
     <div class="form-group">    
         {!! Form::label('nome', 'Nome') !!}                        

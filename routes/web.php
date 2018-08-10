@@ -12,12 +12,6 @@
 */
 Auth::routes();
 /*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/', function(){
     return '<h1>Primeira lógica com Laravel.</h1>';
 });*/
@@ -25,11 +19,20 @@ Route::get('/', function(){
 Route::get('/produtos', 'ProdutoController@lista');
 Route::get('/produtos/mostra/{id}', 'ProdutoController@mostrar')->where('id', '[0-9]+');
 Route::get('/produtos/novo', 'ProdutoController@novo');
-//Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
 Route::match(array('GET', 'POST'), '/produtos/adiciona', 'ProdutoController@adiciona');
-Route::get('/produtos/json', 'ProdutoController@listaJson');   
 Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
-
 Route::get('produtos/{produto}/editar', 'ProdutoController@editar');
-Route::patch('produtos/{produto}', 'ProdutoController@atualizar');
- 
+Route::patch('produtos/{produto}', 'ProdutoController@atualizar'); 
+
+Route::get('/produtos/json', 'ProdutoController@listaJson');   
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+/*
+Route::resource([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);*/

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script>
             $( document ).ready(function() {
-                $(".alert").fadeTo(3500, 500).slideUp(500, function(){
+                $(".alert").fadeTo(5000, 500).slideUp(500, function(){
                 $(".alert").slideUp(500);
                 });
             });                   
@@ -23,10 +23,10 @@
                 <a class="navbar-brand" href="/produtos">Estoque Laravel</a>            
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="{{action('ProdutoController@lista')}}" class="nav-link">Listagem</a>
+                        <a href="{{ action('ProdutoController@lista') }}" class="nav-link">Listagem</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{action('ProdutoController@novo')}}" class="nav-link">novo</a>
+                        <a href="{{ action('ProdutoController@novo') }}" class="nav-link">novo</a>
                     </li>
                 </ul>
             </nav>

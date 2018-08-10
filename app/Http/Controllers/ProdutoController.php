@@ -86,7 +86,7 @@ class ProdutoController extends Controller{
     public function remove($id){
         $produto = Produto::find($id);
         $produto->delete();
-        Request::session()->flash('mensagem_sucesso', 'Cliente deletado com sucesso');
+        Request::session()->flash('mensagem_sucesso', 'Produto deletado com sucesso');
         return redirect()->action('ProdutoController@lista');
     }
     public function editar($id){
@@ -96,7 +96,7 @@ class ProdutoController extends Controller{
     public function atualizar($id){
         $produto = Produto::findOrFail($id);
         $produto->update(Request::all());
-        Request::session()->flash('mensagem_sucesso', 'Cliente atualizado com sucesso');
+        Request::session()->flash('mensagem_sucesso', 'Produto atualizado com sucesso');
         //return Redirect::to('produtos/'.$produto->id.'/editar');
         return redirect()->action('ProdutoController@editar', $produto->id);
     }
