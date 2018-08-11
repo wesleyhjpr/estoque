@@ -7,6 +7,9 @@
     Você não tem nenhum produto cadastrado.
 </div>
 @else
+@php
+$qtd = 0
+@endphp
 <h1>Listagem de produtos</h1>
 <table class="table table-hover">
     <thead>
@@ -32,15 +35,21 @@
         </td>
         {{-- <td><a href="/produtos/mostra?id={{$p->id}}"><span class="fas fa-search"></span></a></td>--}}
     </tr>
+    @php
+        $p->quantidade <= 1 ? $qtd++ : null
+    @endphp 
     @endforeach
     </tbody>
 </table>
-@endif  
+@endif
+@if ($qtd > 0)
 <h4>
     <span class="badge badge-danger float-right">
-    Um ou menos itens no estoque
+        Um ou menos itens no estoque
     </span>
-</h4>
+</h4> 
+@endif  
+
 @if(Session::has('mensagem_sucesso'))
     <div  class="alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
 @endif  
