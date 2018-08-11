@@ -8,7 +8,7 @@ nav.navbar.navbar-dark.bg-info{
 nav.navbar.navbar-dark.bg-info a {
     color: white;
 }
-li p.navbar-text, a.navbar-brand {
+li p.navbar-text, .navbar-dark a.navbar-brand {
     color: white!important ;
 }
 footer.footer {

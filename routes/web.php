@@ -31,6 +31,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/login', 'LoginController@login');/** http://127.0.0.1:8000/login?email=wesleyhjpr@gmail.com&password=123456789 */
 /*
 Route::resource([
     'auth' => 'Auth\AuthController',
