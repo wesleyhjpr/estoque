@@ -20,7 +20,7 @@ Route::get('/produtos', 'ProdutoController@lista');
 Route::get('/produtos/mostra/{id}', 'ProdutoController@mostrar')->where('id', '[0-9]+');
 Route::get('/produtos/novo', 'ProdutoController@novo');
 Route::match(array('GET', 'POST'), '/produtos/adiciona', 'ProdutoController@adiciona');
-Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
+Route::delete('/produtos/remove/{id}', 'ProdutoController@remove');
 Route::get('produtos/{produto}/editar', 'ProdutoController@editar');
 Route::patch('produtos/{produto}', 'ProdutoController@atualizar'); 
 

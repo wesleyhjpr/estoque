@@ -29,9 +29,11 @@ $qtd = 0
         <td>{{ $p->descricao }} </td>
         <td>{{ $p->quantidade }} </td>
         <td>
-            <a href="{{action('ProdutoController@mostrar', $p->id)}}"><span class="fas fa-search"></span></a>&nbsp;
-            <a href="{{action('ProdutoController@editar', $p->id)}}"><span class="fas fa-edit"></span></a>&nbsp;
-            <a href="{{action('ProdutoController@remove', $p->id)}}"><span class="fas fa-trash"></span></a>
+            <a href="{{ action('ProdutoController@mostrar',$p->id) }}"><span class="fas fa-search"></span></a>&nbsp;
+            <a href="{{ action('ProdutoController@editar',$p->id) }}"><span class="fas fa-edit"></span></a>
+            {!! Form::open(['method' => 'DELETE', 'url' => action('ProdutoController@remove',$p->id), 'style' => 'display: inline;']) !!}                                    
+            <button type="submit" class="fas fa-trash"></button>
+            {!! Form::close() !!}
         </td>
         {{-- <td><a href="/produtos/mostra?id={{$p->id}}"><span class="fas fa-search"></span></a></td>--}}
     </tr>

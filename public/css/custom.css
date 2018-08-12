@@ -21,3 +21,12 @@ footer.footer {
 footer.footer p {
     padding: 10px;
 }
+button.fas{
+    color: #3490dc;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+button.fas:hover{
+    color: #1d68a7;
+}

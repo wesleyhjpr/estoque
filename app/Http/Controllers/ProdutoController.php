@@ -9,6 +9,11 @@ use Validator;
 use estoque\Http\Requests\ProdutosRequest;
 
 class ProdutoController extends Controller{
+    public function __construct()
+    {
+        $this->middleware('auth',
+        ['only' => ['adiciona', 'editar', 'remove']]);
+    }
     public function lista(){
         // nosso código vai aqui
         //$produtos = DB::select('select * from produtos');
